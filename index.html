@@ -1,157 +1,91 @@
-// Add this to the top of your script.js
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize particles
-    particlesJS('particles-js', {
-        particles: {
-            number: {
-                value: 50,
-                density: {
-                    enable: true,
-                    value_area: 800
-                }
-            },
-            color: {
-                value: '#ffcc00'
-            },
-            shape: {
-                type: 'circle'
-            },
-            opacity: {
-                value: 0.5,
-                random: false
-            },
-            size: {
-                value: 3,
-                random: true
-            },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: '#ffcc00',
-                opacity: 0.4,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 2,
-                direction: 'none',
-                random: false,
-                straight: false,
-                out_mode: 'out',
-                bounce: false
-            }
-        },
-        interactivity: {
-            detect_on: 'canvas',
-            events: {
-                onhover: {
-                    enable: true,
-                    mode: 'grab'
-                },
-                onclick: {
-                    enable: true,
-                    mode: 'push'
-                },
-                resize: true
-            }
-        },
-        retina_detect: true
-    });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivam Painuly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-    // Animate skill bars
-    const skillBars = document.querySelectorAll('.skill-progress');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.width = entry.target.getAttribute('data-progress') + '%';
-            }
-        });
-    });
+<div class="background-animation"></div>
+<div id="particles-js"></div>
 
-    skillBars.forEach(bar => observer.observe(bar));
-});
+<header>
+    <h1>Shivam Painuly</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://shivampainuly.github.io/Shivam/" target="_blank">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/shivampainuly25" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+</header>
 
-// Create trailing cursors
-const numTrails = 10;
-const trails = [];
+<div class="profile-container">
+    <div class="profile-frame">
+        <img src="your-photo.jpg" alt="Shivam Painuly" class="profile-image">
+    </div>
+</div>
 
-for (let i = 0; i < numTrails; i++) {
-    const trail = document.createElement('div');
-    trail.className = 'cursor-trail';
-    document.body.appendChild(trail);
-    trails.push({
-        element: trail,
-        x: 0,
-        y: 0
-    });
-}
+<main>
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>I am a passionate and dedicated analyst with a strong background in stakeholder management, process management, and digital marketing. I am committed to continuous learning and professional development, always seeking opportunities to apply my knowledge and expertise to achieve organizational goals. I thrive on new challenges and enjoy learning new concepts and improving processes.</p>
+        <a href="resume.pdf" class="btn" download>Download My Resume</a>
+    </section>
 
-const mainCursor = document.getElementById('trailing-cursor');
-let mouseX = 0;
-let mouseY = 0;
+    <section id="work" class="section">
+        <h2>Work Experience</h2>
+        <ul>
+            <li>
+                <strong>Google Operations Center</strong> <span class="years">(2023-Present)</span><br>
+                <em>Analyst</em><br>
+                <span class="description">Led a team to improve process efficiency, ensuring timely and accurate delivery of services.</span>
+            </li>
+            <li>
+                <strong>Cognizant</strong> <span class="years">(2021-2023)</span><br>
+                <em>Research Analyst</em><br>
+                <span class="description">Conducted thorough research and analysis to support business decisions, enhancing data-driven strategies.</span>
+            </li>
+            <li>
+                <strong>Amazon</strong> <span class="years">(2019-2021)</span><br>
+                <em>Operations Support Associate</em><br>
+                <span class="description">Provided operational support, improving service delivery and customer satisfaction.</span>
+            </li>
+        </ul>
+    </section>
 
-// Track mouse movement
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Update main cursor
-    mainCursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-});
+    <section id="certifications" class="section">
+        <h2>Certifications</h2>
+        <ul>
+            <li><strong>Generative AI (2023):</strong> Advanced techniques in AI and machine learning.</li>
+            <li><strong>Google IT Support - Fundamentals (2023):</strong> Comprehensive understanding of IT support and networking fundamentals.</li>
+            <li><strong>IT - Asset Management (2023):</strong> Efficient management and optimization of IT assets.</li>
+            <li><strong>Digital Marketing - Fundamentals (2022):</strong> Core principles and strategies in digital marketing.</li>
+            <li><strong>Knock Down the Lockdown (2022):</strong> Skills and strategies for remote work and productivity.</li>
+            <li><strong>Networking Basics - Nvidia (2022):</strong> Foundational knowledge in networking technologies.</li>
+            <li><strong>CompTIA A+ Network (2022):</strong> Essential IT skills and network troubleshooting techniques.</li>
+        </ul>
+    </section>
 
-// Animation loop for smooth trailing effect
-function animate() {
-    let x = mouseX;
-    let y = mouseY;
-    
-    trails.forEach((trail, index) => {
-        trail.x += (x - trail.x) * 0.3;
-        trail.y += (y - trail.y) * 0.3;
-        
-        trail.element.style.transform = `translate(${trail.x}px, ${trail.y}px)`;
-        
-        x = trail.x;
-        y = trail.y;
-    });
-    
-    requestAnimationFrame(animate);
-}
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </section>
+</main>
 
-animate();
+<div id="trailing-cursor"></div>
 
-// Function to validate email format
-function validateEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-}
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
 
-// Form Submission Scripts
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    let name = document.getElementById('name').value;
-    let email = document.getElementById('email').value;
-    let message = document.getElementById('message').value;
-
-    if (!validateEmail(email)) {
-        alert('shivampainuly01@gmail.com.');
-        return;
-    }
-
-    let mailtoLink = `mailto:shivampainuly01@gmail.com?subject=Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
-    window.location.href = mailtoLink;
-});
-
-document.getElementById('chatbox-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    let name = document.getElementById('chat-name').value;
-    let email = document.getElementById('chat-email').value;
-    let message = document.getElementById('chat-message').value;
-
-    if (!validateEmail(email)) {
-        alert('shivampainuly01@gmail.com');
-        return;
-    }
-
-    let chatMailtoLink = `mailto:shivampainuly01@gmail.com?subject=Chat from ${encodeURIComponent(name)}&body=Email: ${encodeURIComponent(email)}%0D%0A${encodeURIComponent(message)}`;
-    window.location.href = chatMailtoLink;
-});
+</body>
+</html>
